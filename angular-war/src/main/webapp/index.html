@@ -3,40 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <title>DP Sample Project</title>
-<script src="js/angular-1.2.19/angular.js"></script>
+<link href="components/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="components/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/dashboard.css" rel="stylesheet">
+<link href="css/animations.css" rel="stylesheet">
 </head>
 
 
 <body>
-Hello Angular!
-<br/>
-<a>Test</a>
-
-<br/>
-
-
-<div ng-app="invoice1" ng-controller="InvoiceController as invoice">
-  <b>Invoice:</b>
-  <div>
-    Quantity: <input type="number" ng-model="invoice.qty" required >
-  </div>
-  <div>
-    Costs: <input type="number" ng-model="invoice.cost" required >
-    <select ng-model="invoice.inCurr">
-      <option ng-repeat="c in invoice.currencies">{{c}}</option>
-    </select>
-  </div>
-  <div>
-    <b>Total:</b>
-    <span ng-repeat="c in invoice.currencies">
-      {{invoice.total(c) | currency:c}}
-    </span>
-    <button class="btn" ng-click="invoice.pay()">Pay</button>
-  </div>
-</div>
-
-
-<script src="js/invoice1.js"></script>
+	<div ng-app="sampleApp">
+		<div class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<div>
+              		<ul class="nav navbar-nav" ng-controller="NavCtrl" id="nav-bar">
+              			<li ng-repeat="nav in navLabels" ng-class="{active : setActive(nav)}">
+              				<a href="#/{{nav | lowercase}}" ng-click="setSelectedNav(nav)">{{nav}}</a>
+                		</li>
+	              </ul>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div ng-view class="view-frame"></div>
+		</div>
+	</div>
+	<script src="components/jquery/jquery.min.js"></script>
+	<script src="components/angular-1.2.19/angular.js"></script>
+	<script src="components/angular-1.2.19/angular-route.js"></script>
+	<script src="components/angular-1.2.19/angular-animate.js"></script>
+	<script src="components/bootstrap/js/bootstrap.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/controllers.js"></script>
 
 </body>
 </html>
