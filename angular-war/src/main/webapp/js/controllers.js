@@ -13,8 +13,9 @@ controllers.controller('NavCtrl', ['$scope', '$location',
    		};
    		
    		var path = $location.path();
+   		var currentPath = path.substring(1, path.length);
    		
-   		$scope.selected = path.substring(1, path.length);
+   		$scope.selected = currentPath.lenght > 0 ? currentPath :'Home' ;
    		
    	}                                   
 ]);
